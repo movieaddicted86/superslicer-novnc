@@ -22,7 +22,9 @@ This will bind `/configs/` in the container to a local volume on my machine name
 
 **GPU Acceleration/Passthrough**
 
-Like other Docker containers, you can pass your Nvidia GPU into the container using the `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` envs. You can define these using the value of `all` or by providing more narrow and specific values. This has only been tested on Nvidia GPUs.
+Like other Docker containers, you can pass your Nvidia GPU into the container using the `NVIDIA_VISIBLE_DEVICES` and `NVIDIA_DRIVER_CAPABILITIES` envs. You can define these using the value of `all` or by providing more narrow and specific values. This has been tested on Nvidia GPUs.
+
+For Intel GPUs you can use the container's built in drivers by exposing `/dev/dri` and adding the container user to the `video` group. A typical run command looks like `--device=/dev/dri --group-add=video` in addition to any other parameters.
 
 In unraid you can set these values during set up. For containers outside of unraid, you can set this by adding the following params or similar  `-e NVIDIA_DRIVER_CAPABILITIES="all" NVIDIA_VISIBLE_DEVICES="all"`
 
