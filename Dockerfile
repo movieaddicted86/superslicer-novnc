@@ -36,7 +36,7 @@ RUN mkdir -p /slic3r/slic3r-dist \
     && latestSlic3r=$(/slic3r/get_latest_superslicer_release.sh url) \
     && slic3rReleaseName=$(/slic3r/get_latest_superslicer_release.sh name) \
     && curl -sSL ${latestSlic3r} > ${slic3rReleaseName} \
-    && rm -f /slic3r/releaseInfo.json \
+    && rm -f /slic3r/latestReleaseInfo.json \
     && mkdir -p /slic3r/slic3r-dist \
     && tar -xzf ${slic3rReleaseName} -C /slic3r/slic3r-dist --strip-components 1 \
     && rm -f /slic3r/${slic3rReleaseName} \
