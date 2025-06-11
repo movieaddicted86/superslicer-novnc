@@ -20,6 +20,7 @@ RUN apt-get update -y && \
 RUN apt update && apt install -y --no-install-recommends --allow-unauthenticated \
     lxde gtk2-engines-murrine gtk2-engines-pixbuf arc-theme curl jq git\
     libgtk2.0-dev libwx-perl libxmu-dev libgl1-mesa-glx libgl1-mesa-dri \
+    intel-opencl-icd ocl-icd-libopencl1 libva-intel-driver \
     xdg-utils locales pcmanfm libgtk-3-dev libglew-dev libudev-dev libdbus-1-dev zlib1g-dev locales locales-all \
     && apt autoclean -y \
     && apt autoremove -y \
@@ -45,6 +46,7 @@ RUN mkdir -p /slic3r/slic3r-dist \
     && chmod -R 777 /slic3r/ \
     && groupadd slic3r \
     && useradd -g slic3r --create-home --home-dir /home/slic3r slic3r \
+    && usermod -aG video slic3r \
     && mkdir -p /slic3r \
     && mkdir -p /configs \
     && mkdir -p /prints/ \
